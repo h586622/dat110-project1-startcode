@@ -13,26 +13,26 @@ public class RPCUtils {
 	
 	public static byte[] marshallString(byte rpcid, String str) {
 
-		byte[] encoded;
-
-		// TODO: marshall RPC identifier and string into byte array
-
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
+		byte[] encoded = new byte[str.length()+1];
+		
+		encoded[0] = rpcid;
+		
+		for (int i = 0; i<str.length();i++) {
+			encoded[i+1] = (byte) str.charAt(i);
 		}
 
 		return encoded;
 	}
 
 	public static String unmarshallString(byte[] data) {
-
-		String decoded;
-
-		// TODO: unmarshall String contained in data into decoded
-
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
+		
+		byte[] data2 = new byte[data.length-1];
+		
+		for (int i= 0; i< data2.length; i++) {
+			data2[i] = data[i+1];
 		}
+	
+		String decoded = new String(data2, java.nio.charset.StandardCharsets.UTF_8);
 
 		return decoded;
 	}
@@ -79,7 +79,9 @@ public class RPCUtils {
 
 	public static byte[] marshallInteger(byte rpcid, int x) {
 
-		byte[] encoded;
+		byte[] encoded = new byte[5];
+		encoded[0] = rpcid;
+		
 
 		// TODO: marshall RPC identifier and string into byte array
 

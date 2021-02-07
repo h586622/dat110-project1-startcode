@@ -8,7 +8,7 @@ public class Controller  {
 	
 	private static int N = 5;
 	
-	public static void main (String[] args) {
+	public static void main (String[] args)  {
 		
 		Display display;
 		Sensor sensor;
@@ -51,6 +51,10 @@ public class Controller  {
 		for (int i = 0; i<10; i++) {
 			String message ="" +  sensor.read();		
 			display.write(message);
+			try {
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+			}
 		}
 		
 		
